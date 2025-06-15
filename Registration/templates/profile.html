@@ -1,0 +1,12 @@
+<h2>Welcome {{ user.first_name }}!</h2>
+<p>Type: {{ user.get_user_type_display }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Address: {{ user.address_line1 }}, {{ user.city }}, {{ user.state }} - {{ user.pincode }}</p>
+{% if user.profile_picture %}
+    <img src="{{ user.profile_picture.url }}" alt="Profile Picture" style="max-width: 200px;">
+{% endif %}
+
+<form method="post" action="{% url 'logout' %}" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
